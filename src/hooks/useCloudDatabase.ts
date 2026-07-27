@@ -11,6 +11,7 @@ export function useCloudDatabase() {
     setFullState,
     setIsCloudActive,
     setCloudError,
+    setInitialLoadComplete,
     isCloudActive,
     persistLocal,
   } = useAppStore();
@@ -25,6 +26,7 @@ export function useCloudDatabase() {
       if (!useAppStore.getState().isCloudActive) {
         setCloudError('Koneksi Firebase Timeout. Ekstensi AdBlocker mungkin memblokir Firebase. Nonaktifkan AdBlocker untuk situs ini atau gunakan mode offline.');
         setIsCloudActive(false);
+        setInitialLoadComplete(true);
         console.warn('Firebase connection timeout. Switching to local fallback.');
       }
     }, TIMEOUT_MS);
@@ -51,6 +53,7 @@ export function useCloudDatabase() {
         };
 
         setFullState(state);
+        setInitialLoadComplete(true);
       },
       (error) => {
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -71,6 +74,7 @@ export function useCloudDatabase() {
         console.error('Firestore connection error. Using local fallback.', errStr);
         setCloudError(userMessage);
         setIsCloudActive(false);
+        setInitialLoadComplete(true);
         if (unsubRef.current) {
           unsubRef.current();
           unsubRef.current = null;

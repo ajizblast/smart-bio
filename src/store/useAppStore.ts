@@ -40,12 +40,14 @@ interface AppStore extends AppState {
   cloudError: string;
   isLoggedIn: boolean;
   activeTab: 'links' | 'hotels';
+  initialLoadComplete: boolean;
 
   setIsCloudActive: (v: boolean) => void;
   setIsOnline: (v: boolean) => void;
   setCloudError: (msg: string) => void;
   setIsLoggedIn: (v: boolean) => void;
   setActiveTab: (tab: 'links' | 'hotels') => void;
+  setInitialLoadComplete: (v: boolean) => void;
 
   setFullState: (state: AppState) => void;
   updateProfile: (updates: Partial<AppState['profile']>) => void;
@@ -77,6 +79,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
   cloudError: '',
   isLoggedIn: localStorage.getItem(AUTH_KEY) === 'true',
   activeTab: 'links',
+  initialLoadComplete: false,
 
   setIsCloudActive: (v) => set({ isCloudActive: v }),
   setIsOnline: (v) => set({ isOnline: v }),
@@ -87,6 +90,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
     set({ isLoggedIn: v });
   },
   setActiveTab: (tab) => set({ activeTab: tab }),
+  setInitialLoadComplete: (v) => set({ initialLoadComplete: v }),
 
   setFullState: (state) => {
     set({
