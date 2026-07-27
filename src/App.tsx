@@ -47,18 +47,8 @@ function App() {
         <AdminWorkspace onLogout={handleLogout} onShowPublic={handleShowPublic} />
       ) : (
         <>
-          <PublicLanding />
-          {!isLoggedIn && (
-            <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40">
-              <button
-                onClick={() => setShowLogin(true)}
-                className="text-[11px] text-slate-400 hover:text-indigo-600 transition-all font-semibold underline cursor-pointer bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm"
-                title="Admin Login"
-              >
-                Login
-              </button>
-            </div>
-          )}
+          <PublicLanding onLoginClick={() => setShowLogin(true)} />
+          {!isLoggedIn && <div className="hidden" />}
         </>
       )}
     </div>

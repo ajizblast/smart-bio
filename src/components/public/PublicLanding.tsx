@@ -8,7 +8,11 @@ import { CustomArticlePage } from './CustomArticlePage';
 import { Share2 } from 'lucide-react';
 import { showToast } from '../ui/Toast';
 
-export function PublicLanding() {
+interface PublicLandingProps {
+  onLoginClick?: () => void;
+}
+
+export function PublicLanding({ onLoginClick }: PublicLandingProps) {
   const profile = useAppStore((s) => s.profile);
   const theme = useAppStore((s) => s.theme);
   const links = useAppStore((s) => s.links);
@@ -136,6 +140,15 @@ export function PublicLanding() {
 
       <div className="mt-4 text-center max-w-xs flex flex-col items-center gap-1.5">
         <p className="text-[11px] text-slate-400">Desain responsif mobile-first melengkung sempurna.</p>
+        {onLoginClick && (
+          <button
+            onClick={onLoginClick}
+            className="text-[11px] text-slate-400 hover:text-indigo-600 transition-all font-semibold underline cursor-pointer"
+            title="Admin Login"
+          >
+            Login
+          </button>
+        )}
       </div>
     </div>
   );
