@@ -3,16 +3,16 @@ import { getAuth, Auth, signInWithEmailAndPassword } from 'firebase/auth';
 import { initializeFirestore, Firestore, doc, getDoc, setDoc, onSnapshot } from 'firebase/firestore';
 
 const MY_FIREBASE_CONFIG = {
-  apiKey: 'AIzaSyB-Ka4eVgVy-cfmQKuhCKYgKrNPhdl7dRQ',
-  authDomain: 'hotelkeren-241cc.firebaseapp.com',
-  projectId: 'hotelkeren-241cc',
-  storageBucket: 'hotelkeren-241cc.firebasestorage.app',
-  messagingSenderId: '1053376405109',
-  appId: '1:1053376405109:web:4a018cba8d22f994b7a23c',
-  measurementId: 'G-PY4GD0FQH1',
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || 'AIzaSyB-Ka4eVgVy-cfmQKuhCKYgKrNPhdl7dRQ',
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || 'hotelkeren-241cc.firebaseapp.com',
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || 'hotelkeren-241cc',
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || 'hotelkeren-241cc.firebasestorage.app',
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || '1053376405109',
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || '1:1053376405109:web:4a018cba8d22f994b7a23c',
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || 'G-PY4GD0FQH1',
 };
 
-const appId = 'hotel-keren-app-2026';
+const appId = import.meta.env.VITE_APP_ID || 'hotel-keren-app-2026';
 
 let app: FirebaseApp | null = null;
 let auth: Auth | null = null;
