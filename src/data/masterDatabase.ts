@@ -1,0 +1,93 @@
+import { AppState } from '../types/database';
+
+export const MASTER_JSON_DATABASE: AppState = {
+  profile: {
+    name: 'Aisha Claresta',
+    bio: 'Creative Digital Product Specialist ✨ | Temukan rekomendasi hotel & lifestyle pilihan terbaik saya.',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150',
+    socials: {
+      instagram: 'https://instagram.com',
+      tiktok: 'https://tiktok.com',
+      threads: 'https://threads.com',
+      facebook: '',
+      youtube: '',
+      whatsapp: '',
+    },
+  },
+  theme: 'gradient-sunset',
+  links: [
+    { id: 'link-1', title: 'List Hotel di Jakarta', url: '#page-hotel-jakarta', icon: 'fa-hotel', animation: 'glow', active: true },
+    { id: 'link-2', title: 'List Hotel di Bandung', url: '#page-hotel-bandung', icon: 'fa-hotel', animation: 'bounce', active: true },
+    { id: 'link-3', title: 'Tentang Kreator', url: '#page-info-kami', icon: 'fa-info-circle', animation: 'pulse', active: true },
+  ],
+  hotels: [
+    {
+      id: 'hotel-1',
+      name: 'The Langham Jakarta',
+      rating: '4.9',
+      location: 'SCBD, Jakarta Selatan',
+      price: 'Rp 3.800.000',
+      image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=400',
+      badge: 'Ikonik',
+      city: 'jakarta',
+      bookingUrl: 'https://www.traveloka.com',
+    },
+    {
+      id: 'hotel-2',
+      name: 'Alila SCBD Jakarta',
+      rating: '4.8',
+      location: 'Senayan, Jakarta Selatan',
+      price: 'Rp 2.150.000',
+      image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=400',
+      badge: 'Modis',
+      city: 'jakarta',
+      bookingUrl: 'https://www.traveloka.com',
+    },
+    {
+      id: 'hotel-3',
+      name: 'The Gaia Hotel Bandung',
+      rating: '4.9',
+      location: 'Setiabudi, Bandung',
+      price: 'Rp 2.400.000',
+      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400',
+      badge: 'Terpopuler',
+      city: 'bandung',
+      bookingUrl: 'https://www.traveloka.com',
+    },
+    {
+      id: 'hotel-4',
+      name: 'Padma Hotel Bandung',
+      rating: '4.9',
+      location: 'Ciumbuleuit, Bandung',
+      price: 'Rp 2.100.000',
+      image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400',
+      badge: 'Pemandangan Alam',
+      city: 'bandung',
+      bookingUrl: 'https://www.traveloka.com',
+    },
+  ],
+  pages: [
+    {
+      id: 'page-hotel-jakarta',
+      title: 'Daftar Rekomendasi Hotel Jakarta',
+      type: 'hotel',
+      filterCity: 'jakarta',
+      description: 'Pilihan hotel akomodasi bintang 5 premium terpopuler.',
+    },
+    {
+      id: 'page-hotel-bandung',
+      title: 'Daftar Rekomendasi Hotel Bandung',
+      type: 'hotel',
+      filterCity: 'bandung',
+      description: 'Pilihan hotel akomodasi bintang 5 premium terpopuler.',
+    },
+    {
+      id: 'page-info-kami',
+      title: 'Tentang Kreator & Event',
+      type: 'custom',
+      customImg: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=500',
+      customText:
+        'Selamat datang di Direktori HotelKeren saya! Saya mengurasi daftar hotel bintang 5 terbaik untuk melengkapi kebutuhan akomodasi liburan atau bisnis Anda. Dapatkan penawaran promo eksklusif dengan menghubungi tim kami.',
+    },
+  ],
+};
