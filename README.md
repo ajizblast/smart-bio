@@ -122,6 +122,55 @@ Initial data uses example profile "Aisha Claresta" with sample hotels in Jakarta
 
 ---
 
+## Editing Default Database
+
+The initial seed data is stored in `src/data/masterDatabase.ts`. To change the default profile, hotels, links, pages, or theme:
+
+1. Open `src/data/masterDatabase.ts`
+2. Edit the `MASTER_JSON_DATABASE` object — all fields match the admin dashboard form fields
+3. Save the file; the app will use these values on first load or when clicking "Reset to Defaults"
+
+### Fields reference
+
+| Section | Fields |
+|---------|--------|
+| `profile` | `name`, `bio`, `avatar` (URL), `socials` (`instagram`, `tiktok`, `threads`, `facebook`, `youtube`, `whatsapp`) |
+| `theme` | One of: `solid-light`, `solid-dark`, `gradient-sunset`, `gradient-oceanic`, `gradient-cosmic`, `minimalist-border`, `theme-forest`, `theme-sea`, `theme-desert`, `theme-nebula`, `theme-sakura` |
+| `links` | Array of `{ id, title, url, icon, animation, active }` |
+| `hotels` | Array of `{ id, name, rating, location, price, image, badge, city, bookingUrl }` |
+| `pages` | Array of `{ id, title, type, filterCity?, description?, customImg?, customText? }` |
+
+---
+
+## Environment Variables (.env)
+
+Copy `.env.example` to `.env` and fill in your values:
+
+```bash
+cp .env.example .env
+```
+
+### Firebase config (required for cloud sync)
+
+Get these values from [Firebase Console](https://console.firebase.google.com) → Project Settings → General → Your apps → Web app:
+
+| Variable | Description |
+|----------|-------------|
+| `VITE_FIREBASE_API_KEY` | Web API key |
+| `VITE_FIREBASE_AUTH_DOMAIN` | `{projectId}.firebaseapp.com` |
+| `VITE_FIREBASE_PROJECT_ID` | Firebase project ID |
+| `VITE_FIREBASE_STORAGE_BUCKET` | `{projectId}.firebasestorage.app` |
+| `VITE_FIREBASE_MESSAGING_SENDER_ID` | Sender ID |
+| `VITE_FIREBASE_APP_ID` | App ID |
+| `VITE_FIREBASE_MEASUREMENT_ID` | Measurement ID (optional) |
+| `VITE_APP_ID` | Custom app namespace (default: `hotel-keren-app-2026`) |
+
+If `.env` is not set, the app falls back to hardcoded development values.
+
+> **Note:** `.env` is in `.gitignore` and will NOT be committed. Always provide `.env.example` as a template.
+
+---
+
 ## Tech Stack
 
 - **React 18** + **TypeScript**

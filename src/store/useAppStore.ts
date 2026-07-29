@@ -5,6 +5,13 @@ import { MASTER_JSON_DATABASE } from '../data/masterDatabase';
 const STORAGE_KEY = 'hotel_keren_local_state';
 const AUTH_KEY = 'lynkforge_logged_in';
 
+function mergeArrayById<T extends { id: string }>(master: T[], local: T[]): T[] {
+  const map = new Map<string, T>();
+  for (const item of master) map.set(item.id, item);
+  for (const item of local) map.set(item.id, item);
+  return Array.from(map.values());
+}
+
 function loadLocalState(): AppState {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
@@ -18,6 +25,9 @@ function loadLocalState(): AppState {
           ...parsed.profile,
           socials: { ...MASTER_JSON_DATABASE.profile.socials, ...(parsed.profile?.socials || {}) },
         },
+        hotels: mergeArrayById(MASTER_JSON_DATABASE.hotels, parsed.hotels || []),
+        links: mergeArrayById(MASTER_JSON_DATABASE.links, parsed.links || []),
+        pages: mergeArrayById(MASTER_JSON_DATABASE.pages, parsed.pages || []),
       };
     }
   } catch {
@@ -35,21 +45,12 @@ function saveLocal(state: AppState) {
 }
 
 interface AppStore extends AppState {
-  isCloudActive: boolean;
-  isOnline: boolean;
-  cloudError: string;
   isLoggedIn: boolean;
   activeTab: 'links' | 'hotels';
-  initialLoadComplete: boolean;
 
-  setIsCloudActive: (v: boolean) => void;
-  setIsOnline: (v: boolean) => void;
-  setCloudError: (msg: string) => void;
   setIsLoggedIn: (v: boolean) => void;
   setActiveTab: (tab: 'links' | 'hotels') => void;
-  setInitialLoadComplete: (v: boolean) => void;
 
-  setFullState: (state: AppState) => void;
   updateProfile: (updates: Partial<AppState['profile']>) => void;
   setTheme: (theme: ThemeKey) => void;
 
@@ -74,34 +75,15 @@ interface AppStore extends AppState {
 
 export const useAppStore = create<AppStore>((set, get) => ({
   ...loadLocalState(),
-  isCloudActive: false,
-  isOnline: navigator.onLine,
-  cloudError: '',
   isLoggedIn: localStorage.getItem(AUTH_KEY) === 'true',
   activeTab: 'links',
-  initialLoadComplete: false,
 
-  setIsCloudActive: (v) => set({ isCloudActive: v }),
-  setIsOnline: (v) => set({ isOnline: v }),
-  setCloudError: (msg) => set({ cloudError: msg }),
   setIsLoggedIn: (v) => {
     if (v) localStorage.setItem(AUTH_KEY, 'true');
     else localStorage.removeItem(AUTH_KEY);
     set({ isLoggedIn: v });
   },
   setActiveTab: (tab) => set({ activeTab: tab }),
-  setInitialLoadComplete: (v) => set({ initialLoadComplete: v }),
-
-  setFullState: (state) => {
-    set({
-      profile: state.profile,
-      theme: state.theme,
-      links: state.links,
-      hotels: state.hotels,
-      pages: state.pages,
-    });
-    saveLocal(state);
-  },
 
   updateProfile: (updates) => {
     const current = get();

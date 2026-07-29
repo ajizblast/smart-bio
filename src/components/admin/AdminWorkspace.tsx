@@ -1,16 +1,14 @@
 import { useState } from 'react';
 import { useAppStore } from '../../store/useAppStore';
 import { useAdminAuth } from '../../hooks/useAdminAuth';
-import { useCloudDatabase } from '../../hooks/useCloudDatabase';
 import { showConfirm } from '../ui/ConfirmModal';
 import { showToast } from '../ui/Toast';
 import { ProfileForm } from './ProfileForm';
 import { LinkManager } from './LinkManager';
 import { HotelManager } from './HotelManager';
 import { ThemeSelector } from './ThemeSelector';
-import { MigrationCenter } from './MigrationCenter';
 import { PhonePreview } from './PhonePreview';
-import { Link, Hotel, Globe, LogOut, Save, RotateCcw } from 'lucide-react';
+import { Link, Hotel, Globe, LogOut, RotateCcw } from 'lucide-react';
 
 interface AdminWorkspaceProps {
   onLogout: () => void;
@@ -20,11 +18,8 @@ interface AdminWorkspaceProps {
 export function AdminWorkspace({ onLogout, onShowPublic }: AdminWorkspaceProps) {
   const activeTab = useAppStore((s) => s.activeTab);
   const setActiveTab = useAppStore((s) => s.setActiveTab);
-  const isCloudActive = useAppStore((s) => s.isCloudActive);
-  const cloudError = useAppStore((s) => s.cloudError);
   const resetToDefaults = useAppStore((s) => s.resetToDefaults);
   const { logout } = useAdminAuth();
-  const { saveAllChanges } = useCloudDatabase();
 
   const handleLogout = () => {
     showConfirm('Apakah Anda yakin ingin keluar dari Admin Dashboard?', () => {
@@ -32,15 +27,6 @@ export function AdminWorkspace({ onLogout, onShowPublic }: AdminWorkspaceProps) 
       onLogout();
       showToast('Sesi telah keluar dengan aman.', 'info');
     });
-  };
-
-  const handleSave = async () => {
-    try {
-      await saveAllChanges();
-      showToast('Seluruh modifikasi profil, links, dan database sukses disimpan!', 'success');
-    } catch {
-      showToast('Gagal menyimpan ke Cloud Firestore.', 'error');
-    }
   };
 
   const handleReset = () => {
@@ -64,13 +50,9 @@ export function AdminWorkspace({ onLogout, onShowPublic }: AdminWorkspaceProps) 
         </div>
         <div className="flex flex-col items-end gap-1">
           <div className="flex items-center gap-3">
-            <span className={`text-xs px-3 py-1.5 rounded-full font-bold flex items-center gap-1.5 ${
-              isCloudActive
-                ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
-                : 'bg-amber-50 text-amber-700 border border-amber-200'
-            }`}>
-              <span className={`w-2 h-2 rounded-full ${isCloudActive ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'}`}></span>
-              {isCloudActive ? 'Cloud Database (Aktif)' : 'Local JSON (Offline)'}
+            <span className="text-xs px-3 py-1.5 rounded-full font-bold flex items-center gap-1.5 bg-emerald-50 text-emerald-700 border border-emerald-200">
+              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+              Database Lokal
             </span>
             <button onClick={onShowPublic} className="px-4 py-2 text-xs md:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-950 hover:bg-slate-100 transition-all flex items-center gap-2">
               <Globe className="w-4 h-4 text-slate-400" /> Halaman Utama
@@ -83,11 +65,6 @@ export function AdminWorkspace({ onLogout, onShowPublic }: AdminWorkspaceProps) 
               <LogOut className="w-4 h-4" />
             </button>
           </div>
-          {cloudError && (
-            <div className="text-[10px] text-rose-600 font-semibold bg-rose-50 px-2.5 py-1 rounded-lg border border-rose-100 max-w-md truncate">
-              <i className="fas fa-exclamation-circle"></i> Error: {cloudError}
-            </div>
-          )}
         </div>
       </header>
 
@@ -116,7 +93,6 @@ export function AdminWorkspace({ onLogout, onShowPublic }: AdminWorkspaceProps) 
             {activeTab === 'links' ? (
               <div className="space-y-6">
                 <ProfileForm />
-                <MigrationCenter />
                 <LinkManager />
                 <ThemeSelector />
               </div>
@@ -127,11 +103,8 @@ export function AdminWorkspace({ onLogout, onShowPublic }: AdminWorkspaceProps) 
             )}
 
             <div className="flex items-center gap-3">
-              <button onClick={handleSave} className="flex-grow py-3 px-6 text-sm font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 rounded-xl transition-all shadow-lg shadow-indigo-100 flex items-center justify-center gap-2">
-                <Save className="w-4 h-4" /> Simpan Semua Perubahan (Cloud)
-              </button>
-              <button onClick={handleReset} className="py-3 px-5 text-sm font-bold text-rose-600 hover:text-rose-700 bg-rose-50 hover:bg-rose-100 rounded-xl transition-all flex items-center justify-center gap-2 border border-rose-100" title="Reset ke Default">
-                <RotateCcw className="w-4 h-4" /> Reset
+              <button onClick={handleReset} className="flex-grow py-3 px-5 text-sm font-bold text-rose-600 hover:text-rose-700 bg-rose-50 hover:bg-rose-100 rounded-xl transition-all flex items-center justify-center gap-2 border border-rose-100" title="Reset ke Default">
+                <RotateCcw className="w-4 h-4" /> Reset ke Default
               </button>
             </div>
           </div>

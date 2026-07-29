@@ -116,6 +116,55 @@ Data awal menggunakan profil contoh "Aisha Claresta" dengan hotel contoh di Jaka
 
 ---
 
+## Mengedit Database Default
+
+Data awal (seed) disimpan di `src/data/masterDatabase.ts`. Untuk mengubah default profil, hotel, link, halaman, atau tema:
+
+1. Buka `src/data/masterDatabase.ts`
+2. Edit objek `MASTER_JSON_DATABASE` — semua field sesuai dengan form di dashboard admin
+3. Simpan file; data baru akan dipakai saat pertama load atau saat klik "Reset to Defaults"
+
+### Referensi field
+
+| Bagian | Field |
+|--------|-------|
+| `profile` | `name`, `bio`, `avatar` (URL), `socials` (`instagram`, `tiktok`, `threads`, `facebook`, `youtube`, `whatsapp`) |
+| `theme` | Salah satu: `solid-light`, `solid-dark`, `gradient-sunset`, `gradient-oceanic`, `gradient-cosmic`, `minimalist-border`, `theme-forest`, `theme-sea`, `theme-desert`, `theme-nebula`, `theme-sakura` |
+| `links` | Array dari `{ id, title, url, icon, animation, active }` |
+| `hotels` | Array dari `{ id, name, rating, location, price, image, badge, city, bookingUrl }` |
+| `pages` | Array dari `{ id, title, type, filterCity?, description?, customImg?, customText? }` |
+
+---
+
+## Pengisian Environment Variables (.env)
+
+Salin `.env.example` ke `.env` lalu isi nilai Anda:
+
+```bash
+cp .env.example .env
+```
+
+### Konfigurasi Firebase (wajib untuk cloud sync)
+
+Ambil nilai berikut dari [Firebase Console](https://console.firebase.google.com) → Project Settings → General → Your apps → Web app:
+
+| Variable | Keterangan |
+|----------|------------|
+| `VITE_FIREBASE_API_KEY` | Web API key |
+| `VITE_FIREBASE_AUTH_DOMAIN` | `{projectId}.firebaseapp.com` |
+| `VITE_FIREBASE_PROJECT_ID` | ID project Firebase |
+| `VITE_FIREBASE_STORAGE_BUCKET` | `{projectId}.firebasestorage.app` |
+| `VITE_FIREBASE_MESSAGING_SENDER_ID` | Sender ID |
+| `VITE_FIREBASE_APP_ID` | App ID |
+| `VITE_FIREBASE_MEASUREMENT_ID` | Measurement ID (opsional) |
+| `VITE_APP_ID` | Namespace aplikasi (default: `hotel-keren-app-2026`) |
+
+Jika `.env` tidak diisi, aplikasi akan menggunakan nilai development yang sudah ada di kode.
+
+> **Catatan:** `.env` sudah masuk `.gitignore` sehingga TIDAK akan ter-commit. Selalu sediakan `.env.example` sebagai template.
+
+---
+
 ## Tech Stack
 
 - **React 18** + **TypeScript**

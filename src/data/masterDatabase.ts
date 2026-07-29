@@ -2,23 +2,24 @@ import { AppState } from '../types/database';
 
 export const MASTER_JSON_DATABASE: AppState = {
   profile: {
-    name: 'Aisha Claresta',
+    name: 'Chahyo Purnomo Aji',
     bio: 'Creative Digital Product Specialist ✨ | Temukan rekomendasi hotel & lifestyle pilihan terbaik saya.',
     avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150',
     socials: {
-      instagram: 'https://instagram.com',
-      tiktok: 'https://tiktok.com',
-      threads: 'https://threads.com',
+      instagram: 'https://instagram.com/kakcayo',
+      tiktok: 'https://tiktok.com/kakcayo',
+      threads: 'https://threads.com/kakcayo',
       facebook: '',
       youtube: '',
-      whatsapp: '',
+      whatsapp: '085161052522',
     },
   },
-  theme: 'gradient-sunset',
+  theme: 'theme-sea',
   links: [
-    { id: 'link-1', title: 'List Hotel di Jakarta', url: '#page-hotel-jakarta', icon: 'fa-hotel', animation: 'glow', active: true },
+    { id: 'link-1', title: 'List Hotel di Jakarta', url: '#page-hotel-jakarta', icon: 'fa-hotel', animation: 'bounce', active: true },
     { id: 'link-2', title: 'List Hotel di Bandung', url: '#page-hotel-bandung', icon: 'fa-hotel', animation: 'bounce', active: true },
-    { id: 'link-3', title: 'Tentang Kreator', url: '#page-info-kami', icon: 'fa-info-circle', animation: 'pulse', active: true },
+    { id: 'link-3', title: 'List Hotel di Bali', url: '#page-hotel-bali', icon: 'fa-hotel', animation: 'bounce', active: true },
+    { id: 'link-4', title: 'Tentang Kreator', url: '#page-info-kami', icon: 'fa-info-circle', animation: 'bounce', active: true },
   ],
   hotels: [
     {
@@ -65,6 +66,17 @@ export const MASTER_JSON_DATABASE: AppState = {
       city: 'bandung',
       bookingUrl: 'https://www.traveloka.com',
     },
+        {
+      id: 'hotel-5',
+      name: 'Padma Hotel Bali',
+      rating: '4.9',
+      location: 'Klungkung, Bali',
+      price: 'Rp 9.100.000',
+      image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400',
+      badge: 'Pemandangan Alam',
+      city: 'bali',
+      bookingUrl: 'https://www.traveloka.com',
+    },
   ],
   pages: [
     {
@@ -81,6 +93,13 @@ export const MASTER_JSON_DATABASE: AppState = {
       filterCity: 'bandung',
       description: 'Pilihan hotel akomodasi bintang 5 premium terpopuler.',
     },
+    {
+      id: 'page-hotel-bali',
+      title: 'Daftar Rekomendasi Hotel Bali',
+      type: 'hotel',
+      filterCity: 'bali',
+      description: 'Pilihan hotel akomodasi bintang 5 premium terpopuler.',
+    },    
     {
       id: 'page-info-kami',
       title: 'Tentang Kreator & Event',
