@@ -4,7 +4,7 @@ export const MASTER_JSON_DATABASE: AppState = {
   profile: {
     name: 'Chahyo Purnomo Aji',
     bio: 'Creative Digital Product Specialist ✨ | Temukan rekomendasi hotel & lifestyle pilihan terbaik saya.',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150',
+    avatar: 'https://iili.io/CvbfL1s.jpg',
     socials: {
       instagram: 'https://instagram.com/kakcayo',
       tiktok: 'https://tiktok.com/kakcayo',
