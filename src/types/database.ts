@@ -70,6 +70,7 @@ export interface ThemeStyles {
   avatarBorder: string;
   badge: string;
   tag: string;
+  btn: string;
 }
 
 export interface AppState {

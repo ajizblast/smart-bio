@@ -14,7 +14,7 @@ export const MASTER_JSON_DATABASE: AppState = {
       whatsapp: '085161052522',
     },
   },
-  theme: 'theme-sea',
+  theme: 'theme-forest',
   links: [
     { id: 'link-1', title: 'List Hotel di Jakarta', url: '#page-hotel-jakarta', icon: 'fa-hotel', animation: 'bounce', active: true },
     { id: 'link-2', title: 'List Hotel di Bandung', url: '#page-hotel-bandung', icon: 'fa-hotel', animation: 'bounce', active: true },

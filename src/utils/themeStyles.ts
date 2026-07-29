@@ -11,6 +11,7 @@ export function getThemeStyles(theme: ThemeKey): ThemeStyles {
         avatarBorder: 'border-2 border-indigo-500',
         badge: 'text-indigo-400 bg-indigo-950/40 border border-indigo-900',
         tag: 'bg-slate-800 text-slate-300',
+        btn: 'bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white',
       };
     case 'solid-light':
       return {
@@ -21,6 +22,7 @@ export function getThemeStyles(theme: ThemeKey): ThemeStyles {
         avatarBorder: 'border-2 border-slate-200',
         badge: 'text-slate-600 bg-slate-100',
         tag: 'bg-slate-100 text-slate-600 border border-slate-200',
+        btn: 'bg-gradient-to-r from-slate-800 to-slate-950 hover:from-slate-900 hover:to-black text-white',
       };
     case 'gradient-sunset':
       return {
@@ -31,6 +33,7 @@ export function getThemeStyles(theme: ThemeKey): ThemeStyles {
         avatarBorder: 'border-4 border-white/30',
         badge: 'text-pink-100 bg-pink-900/30',
         tag: 'bg-white/20 text-white',
+        btn: 'bg-gradient-to-r from-rose-600 to-pink-700 hover:from-rose-700 hover:to-pink-800 text-white',
       };
     case 'gradient-oceanic':
       return {
@@ -41,6 +44,7 @@ export function getThemeStyles(theme: ThemeKey): ThemeStyles {
         avatarBorder: 'border-4 border-white/30',
         badge: 'text-blue-100 bg-blue-900/30',
         tag: 'bg-white/20 text-white',
+        btn: 'bg-gradient-to-r from-blue-800 to-cyan-700 hover:from-blue-900 hover:to-cyan-800 text-white',
       };
     case 'gradient-cosmic':
       return {
@@ -51,6 +55,7 @@ export function getThemeStyles(theme: ThemeKey): ThemeStyles {
         avatarBorder: 'border-4 border-white/30',
         badge: 'text-purple-100 bg-purple-900/30',
         tag: 'bg-white/10 text-white',
+        btn: 'bg-gradient-to-r from-violet-600 to-fuchsia-700 hover:from-violet-700 hover:to-fuchsia-800 text-white',
       };
     case 'minimalist-border':
       return {
@@ -61,6 +66,7 @@ export function getThemeStyles(theme: ThemeKey): ThemeStyles {
         avatarBorder: 'border-2 border-slate-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]',
         badge: 'text-slate-800 border border-slate-800 bg-white',
         tag: 'border border-slate-900 text-slate-900 bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]',
+        btn: 'bg-black hover:bg-slate-800 text-white border-2 border-slate-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]',
       };
     case 'theme-forest':
       return {
@@ -72,6 +78,7 @@ export function getThemeStyles(theme: ThemeKey): ThemeStyles {
         avatarBorder: 'border-4 border-emerald-500/40',
         badge: 'text-emerald-200 bg-emerald-900/60 border border-emerald-800',
         tag: 'bg-emerald-900/40 text-emerald-100 border border-emerald-800',
+        btn: 'bg-gradient-to-r from-emerald-600 to-green-700 hover:from-emerald-700 hover:to-green-800 text-white',
       };
     case 'theme-sea':
       return {
@@ -83,6 +90,7 @@ export function getThemeStyles(theme: ThemeKey): ThemeStyles {
         avatarBorder: 'border-4 border-cyan-500/40',
         badge: 'text-cyan-200 bg-cyan-900/60 border border-cyan-800',
         tag: 'bg-cyan-900/40 text-cyan-100 border border-cyan-800',
+        btn: 'bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-700 hover:to-blue-800 text-white',
       };
     case 'theme-desert':
       return {
@@ -94,6 +102,7 @@ export function getThemeStyles(theme: ThemeKey): ThemeStyles {
         avatarBorder: 'border-4 border-amber-700/40',
         badge: 'text-amber-900 bg-amber-200/80 border border-amber-300',
         tag: 'bg-amber-200/60 text-amber-950 border border-amber-300',
+        btn: 'bg-gradient-to-r from-amber-700 to-orange-800 hover:from-amber-800 hover:to-orange-900 text-white',
       };
     case 'theme-nebula':
       return {
@@ -105,6 +114,7 @@ export function getThemeStyles(theme: ThemeKey): ThemeStyles {
         avatarBorder: 'border-4 border-fuchsia-500/40',
         badge: 'text-fuchsia-200 bg-fuchsia-900/60 border border-fuchsia-800',
         tag: 'bg-fuchsia-900/40 text-fuchsia-100 border border-fuchsia-800',
+        btn: 'bg-gradient-to-r from-fuchsia-600 to-violet-700 hover:from-fuchsia-700 hover:to-violet-800 text-white',
       };
     case 'theme-sakura':
       return {
@@ -116,6 +126,7 @@ export function getThemeStyles(theme: ThemeKey): ThemeStyles {
         avatarBorder: 'border-4 border-rose-400/40',
         badge: 'text-rose-800 bg-rose-200/80 border border-rose-300',
         tag: 'bg-rose-200/60 text-rose-900 border border-rose-300',
+        btn: 'bg-gradient-to-r from-rose-600 to-pink-700 hover:from-rose-700 hover:to-pink-800 text-white',
       };
     default:
       return {
@@ -126,6 +137,7 @@ export function getThemeStyles(theme: ThemeKey): ThemeStyles {
         avatarBorder: 'border-2 border-slate-200',
         badge: 'text-slate-600 bg-slate-100',
         tag: 'bg-slate-100 text-slate-600',
+        btn: 'bg-gradient-to-r from-slate-800 to-slate-950 hover:from-slate-900 hover:to-black text-white',
       };
   }
 }

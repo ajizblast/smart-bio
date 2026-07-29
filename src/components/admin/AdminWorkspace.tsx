@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAppStore } from '../../store/useAppStore';
+import { getThemeStyles } from '../../utils/themeStyles';
 import { useAdminAuth } from '../../hooks/useAdminAuth';
 import { showConfirm } from '../ui/ConfirmModal';
 import { showToast } from '../ui/Toast';
@@ -19,6 +20,8 @@ export function AdminWorkspace({ onLogout, onShowPublic }: AdminWorkspaceProps) 
   const activeTab = useAppStore((s) => s.activeTab);
   const setActiveTab = useAppStore((s) => s.setActiveTab);
   const resetToDefaults = useAppStore((s) => s.resetToDefaults);
+  const theme = useAppStore((s) => s.theme);
+  const styles = getThemeStyles(theme);
   const { logout } = useAdminAuth();
 
   const handleLogout = () => {
@@ -103,7 +106,7 @@ export function AdminWorkspace({ onLogout, onShowPublic }: AdminWorkspaceProps) 
             )}
 
             <div className="flex items-center gap-3">
-              <button onClick={handleReset} className="flex-grow py-3 px-5 text-sm font-bold text-rose-600 hover:text-rose-700 bg-rose-50 hover:bg-rose-100 rounded-xl transition-all flex items-center justify-center gap-2 border border-rose-100" title="Reset ke Default">
+              <button onClick={handleReset} className={`flex-grow py-3 px-5 text-sm font-bold rounded-xl transition-all flex items-center justify-center gap-2 ${styles.btn}`} title="Reset ke Default">
                 <RotateCcw className="w-4 h-4" /> Reset ke Default
               </button>
             </div>
