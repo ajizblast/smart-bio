@@ -122,7 +122,7 @@ export function HotelDirectoryPage({ page, onBack, themeStyles, isPreview = fals
                       href={bookingLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-3 py-1.5 rounded-lg text-[9px] font-extrabold bg-indigo-600 text-white hover:bg-indigo-700 transition-all shadow-md text-center flex items-center gap-1"
+                      className={`px-3 py-1.5 rounded-lg text-[9px] font-extrabold transition-all shadow-md text-center flex items-center gap-1 ${themeStyles.btn}`}
                     >
                       Pesan <i className="fas fa-external-link-alt text-[8px]"></i>
                     </a>
